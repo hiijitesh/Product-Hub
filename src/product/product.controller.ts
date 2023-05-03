@@ -2,25 +2,24 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Body, Controller, Get, Post, Param, Patch, Delete } from '@nestjs/common';
 import { ProductService } from './product.service';
+import { title } from 'process';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
   //to handle the incoming request from the body we need @Body decorator
   @Post('add')
-  addProduct(
-    @Body('title') prodTitle: string,
-    @Body('description') prodDesc: string,
-    @Body('price') prodPrice: number,
-  ): any {
-    const newId =  this.productService.insertProduct(prodTitle, prodDesc, prodPrice);
+  async addProduct(
+    @Body () completeBody : {title:string, description:string, price:number}
+  ) {
+    const newId =  await this.productService.insertProduct(completeBody.title, completeBody.description, completeBody.price);
     return {id:newId};
   }
 
 
   @Get('all')
-  getTotalProducts() {
-    return this.productService.getAllProduct();
+  async getTotalProducts() {
+    return await this.productService.getAllProduct();
   }
 
   @Get(':id')
@@ -29,18 +28,18 @@ export class ProductController {
   }
 
   @Patch(':id')
-  updateProduct(
+  async updateProduct(
     @Param('id') prodId:string,
-    @Body('title') prodTitle: string,
-    @Body('description') prodDesc: string,
-    @Body('price') prodPrice: number
+    @Body () completeBody : {title:string, description:string, price:number}
+
+
   ){
-    this.productService.updateProduct(prodId, prodTitle, prodDesc, prodPrice)  
+    await this.productService.updateProduct(prodId, completeBody.title, completeBody.description, completeBody.price)
 return null}
 
     @Delete(':id')
-    removeProduct(@Param('id') prodId:string){
-        this.productService.deleteProduct(prodId);
+    async removeProduct(@Param('id') prodId:string){
+        await this.productService.deleteProduct(prodId);
         return null;
     }
 }
