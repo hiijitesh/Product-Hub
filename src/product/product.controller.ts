@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Body, Controller, Get, Post, Param, Patch, Delete } from '@nestjs/common';
 import { ProductService } from './product.service';
-import { title } from 'process';
 
 @Controller('product')
 export class ProductController {

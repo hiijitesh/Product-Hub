@@ -6,7 +6,6 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class ProductService {
-  private product: Product[] = [];
 	constructor(@InjectModel('Product') private readonly productModel : Model<Product>){}
 
   async insertProduct(title: string, desc: string, price: number) {
