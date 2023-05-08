@@ -13,6 +13,14 @@ export const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export interface Product extends mongoose.Document {
@@ -20,4 +28,5 @@ export interface Product extends mongoose.Document {
   title: string;
   description: string;
   price: number;
+  userId: string;
 }

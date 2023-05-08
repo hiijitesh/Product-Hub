@@ -16,14 +16,14 @@ export class ProductService {
 		});
 
 		const newProduct = await currentProduct.save();
-		console.log(newProduct);
+		// console.log(newProduct);
 		
     return newProduct.id as string;
   }
 
 	async getAllProduct(){
 		const products = await this.productModel.find().exec();
-		console.log(products);
+		// console.log(products);
 		
 		return products.map(prods=>({
 			id:prods.id,
