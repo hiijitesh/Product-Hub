@@ -10,7 +10,7 @@ export class UsersService {
   async createUser(
     name: string,
     username: string,
-    password: string,
+    password: string
   ): Promise<any> {
     const newUser = await this.userModel.findOne({ username: username });
     if (!newUser) {

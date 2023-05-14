@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ProductModule,
     MongooseModule.forRoot(
-      'mongodb://honcadmin:honcadmin390@devapi.honc.io/NestJS_Jitesh?authMechanism=SCRAM-SHA-1&authSource=admin',
+      'mongodb://honcadmin:honcadmin390@devapi.honc.io/NestJS_Jitesh?authMechanism=SCRAM-SHA-1&authSource=admin'
     ),
     ConfigModule.forRoot(),
     UsersModule,

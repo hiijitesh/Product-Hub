@@ -6,7 +6,7 @@ import { Model } from 'mongoose';
 @Injectable()
 export class ProductService {
   constructor(
-    @InjectModel('Product') private readonly productModel: Model<Product>,
+    @InjectModel('Product') private readonly productModel: Model<Product>
   ) {}
 
   async insertProduct(title: string, desc: string, price: number) {
@@ -48,7 +48,7 @@ export class ProductService {
     productId: string,
     title: string,
     desc: string,
-    price: number,
+    price: number
   ) {
     const updatedProduct = await this.findProduct(productId);
 
